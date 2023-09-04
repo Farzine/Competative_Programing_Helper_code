@@ -1,32 +1,36 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 #define int long long
 
-
-signed main()
+signed main() 
 {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);cout.tie(NULL);
+    int n;
+    cin >> n;
+    vector<int> a(n+1);
 
-	int t;
-	cin>>t;
-	while(t--)
-	{
-		int n;
-		cin>>n;
-		int a[n+1];
-		for(int i=0; i<n; i++) cin>>a[i];
-		int minn = INT_MAX;
-		int ct=0;
-		for (int i = n-1; i >=0; i--)
-		{
-			if(a[i]>minn)
-			ct++;
-			minn = min(minn,a[i]);
-		}
-		cout<<ct<<endl;
-		
-	}
+    unordered_map<int, int> pos;
 
-	return 0;
+    for (int i = 0; i < n; i++) 
+    {
+        cin >> a[i];
+        pos[a[i]] = i + 1;
+    }
+
+    int m;
+    cin >> m;
+    int sum = 0;
+    int dum = 0;
+
+    for (int i = 0; i < m; i++) 
+    {
+        int x;
+        cin >> x;
+
+        sum += pos[x];
+        dum += abs(pos[x]-n+1);
+    }
+
+    cout << sum << " " << dum << endl;
+
+    return 0;
 }
