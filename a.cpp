@@ -4,33 +4,26 @@ using namespace std;
 
 signed main() 
 {
-    int n;
-    cin >> n;
-    vector<int> a(n+1);
+    int t;
+    cin >> t;
 
-    unordered_map<int, int> pos;
-
-    for (int i = 0; i < n; i++) 
+    while (t--) 
     {
-        cin >> a[i];
-        pos[a[i]] = i + 1;
+        int n;
+        cin >> n;
+
+        int fristNumber = 1;
+
+        for(int i = 2; i*i <= n; i++)
+        {
+            if(n % i == 0)
+            {
+                fristNumber = max(n/i, fristNumber);
+            }
+        }
+
+        cout << fristNumber << " " << n - fristNumber << endl;
     }
-
-    int m;
-    cin >> m;
-    int sum = 0;
-    int dum = 0;
-
-    for (int i = 0; i < m; i++) 
-    {
-        int x;
-        cin >> x;
-
-        sum += pos[x];
-        dum += abs(pos[x]-n+1);
-    }
-
-    cout << sum << " " << dum << endl;
 
     return 0;
 }
