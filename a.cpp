@@ -1,28 +1,31 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define int long long
+#include <iostream>
+#include <vector>
 
-signed main() 
-{
+using namespace std;
+
+int main() {
     int t;
     cin >> t;
 
-    while (t--) 
-    {
+    while (t--) {
         int n;
         cin >> n;
 
-        int fristNumber = 1;
-
-        for(int i = 2; i*i <= n; i++)
-        {
-            if(n % i == 0)
-            {
-                fristNumber = max(n/i, fristNumber);
-            }
+        vector<int> a(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
         }
 
-        cout << fristNumber << " " << n - fristNumber << endl;
+        int min_b = a[n - 1] + 1; // Initialize min_b to a value greater than the last element of a
+
+        for (int i = n - 1; i >= 0; i--) {
+            if (a[i] > min_b) {
+                break;
+            }
+            min_b = a[i];
+        }
+
+        cout << min_b + 1 << endl;
     }
 
     return 0;
