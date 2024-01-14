@@ -1,32 +1,30 @@
-#include <iostream>
-#include <vector>
-
+#include<bits/stdc++.h>
 using namespace std;
+#define int long long
 
-int main() {
+
+signed main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);cout.tie(NULL);
+
     int t;
-    cin >> t;
-
-    while (t--) {
-        int n;
-        cin >> n;
-
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
+    cin>>t;
+    while (t--)
+    {
+        int a,b;
+        cin>>a>>b;
+        if(b%a==0)
+        cout<<(b*b)/a<<endl;
+        else
+        {
+            cout<<(b*a)/__gcd(a,b)<<endl;
         }
-
-        int min_b = a[n - 1] + 1; // Initialize min_b to a value greater than the last element of a
-
-        for (int i = n - 1; i >= 0; i--) {
-            if (a[i] > min_b) {
-                break;
-            }
-            min_b = a[i];
-        }
-
-        cout << min_b + 1 << endl;
+        
     }
+    
+
+
 
     return 0;
 }
