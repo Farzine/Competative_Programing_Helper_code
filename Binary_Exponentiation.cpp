@@ -46,6 +46,22 @@ int binary_exponentiation(int a, int b)
     
 }
 
+int binary_exponentiation_iterative(int a, int b)
+{
+    int res = 1;
+    while (b>0)
+    {
+        if(b&1)// check b is odd or not
+        {
+            res = (res * a)%MOD;
+        }
+        a = (a*a)%MOD;
+        b = b>>1; // b = b/2
+    }
+    return res;
+    
+}
+
 
 signed main()
 {
@@ -54,7 +70,7 @@ signed main()
 
     cout<<binary_exponentiation(2,13)<<endl;
 
-
+    cout<<binary_exponentiation_iterative(2,13)<<endl;
 
     return 0;
 }
